@@ -1,0 +1,21 @@
+import asyncio
+
+@asyncio.coroutine #python3.5新语法用 async def wget(host)
+def wget(host):
+	print("wget %s" % host)
+	connect = asyncio.open_connection(host,80)
+	reader,writer = yield from connect #python3.5新语法用await代替yield from
+	header = 'GET HTTP/1.1 \r\nHost: %s\r\n\r\n' % host
+	writer.write(header.encode('utf-8'))
+	yield from writer.drain()
+	while True:
+		line = yield from reader.readline()
+		if line == b'\r\n':
+			break
+		print('%s header > %s' % (host,line.decode('utf-8')))
+	writer.close()
+
+tasks = [wget(host) for host in ['www.sina.com.cn', 'www.sohu.com', 'www.163.com']]
+loop = asyncio.get_event_loop()
+loop.run_until_complete(asyncio.wait(tasks))
+loop.close()
