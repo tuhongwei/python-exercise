@@ -1,8 +1,8 @@
-<% extends '__base__.html' %>
+{% extends '__base__.html' %}
 
-<% block title %>评论<% endblock %>
+{% block title %}评论{% endblock %}
 
-<% block beforehead %>
+{% block beforehead %}
 
 <script>
 	function initVM(data){
@@ -41,9 +41,9 @@
 	});
 </script>
 
-<% endblock %>
+{% endblock %}
 
-<% block content %>
+{% block content %}
 	<div class="uk-width-1-1 uk-margin-bottom">
 		<div class="uk-panel uk-panel-box">
 			<ul class="uk-breadcrumb">
@@ -81,4 +81,4 @@
 		</table>
 		<div v-component="pagination" v-with="page"></div>
 	</div>
-<% endblock %>
+{% endblock %}
