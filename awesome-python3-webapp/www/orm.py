@@ -23,7 +23,7 @@ async def destroy_pool():
 		__pool.close()
 		await __pool.wait_closed()
 def log(sql,args=()):
-	logging.info('SQL: %s' % sql)
+	logging.info('SQL: %s, args: %s' % (sql, args))
 def create_args_string(num):
 	L = []
 	for n in range(num):
@@ -163,7 +163,8 @@ class Model(dict,metaclass=ModelMetaclass):
 				args.append(limit)
 			elif isinstance(limit, tuple) and len(limit) == 2:
 				sql.append('?, ?')
-				args.append(limit)
+				args.append(limit[0])
+				args.append(limit[1])
 			else:
 				raise ValueError('Invalid limit value: %s' % str(limit))
 		rs = await select(' '.join(sql), args)

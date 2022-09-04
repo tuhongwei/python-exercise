@@ -30,7 +30,7 @@
 							passwd: this.passwd == '' ? '' : CryptoJS.SHA1(email + ':' + this.passwd).toString()
 						};
 						$form.postJSON('/api/authenticate',data,function(err,result){
-								if(! err){
+								if(!err){
 									location.assign('/');
 								}
 						});

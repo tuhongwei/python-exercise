@@ -37,6 +37,7 @@
 				if(err){
 					return fatal(err);
 				}
+				console.log('results', results)
 				$("#loading").hide();
 				initVM(results);
 			});
@@ -45,7 +46,7 @@
 {%endblock %}
 
 {% block content %}
-	<div class="uk-width-1-1 uk-margin-bottom">
+	<div id="vm" class="uk-width-1-1 uk-margin-bottom">
 		<a href="/manage/blogs/create" class="uk-button uk-button-primary"><i class="uk-icon-plus"></i> 新日志</a>
 		<table class="uk-table uk-table-hover">
 			<thead>
