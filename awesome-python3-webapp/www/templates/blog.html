@@ -67,7 +67,7 @@
 								<h4 class="uk-comment-title">{{ comment.user_name }}{% if comment.user_id == blog.user_id %}（作者）{% endif %}</h4>
 								<p class="uk-comment-meta">{{ comment.created_at|datetime }}</p>
 							</header>
-							<div class="uk-comment-body">{{ comment.html_comment|safe }}</div>
+							<div class="uk-comment-body">{{ comment.html_content|safe }}</div>
 						</article>
 					</li>
 					{% else %}
