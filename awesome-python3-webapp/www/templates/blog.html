@@ -1,8 +1,8 @@
-<% extends '__base__.html' %>
+{% extends '__base__.html' %}
 
-<% block title %>{{ blog.name }}<% endblock %>
+{% block title %}{{ blog.name }}{% endblock %}
 
-<% block beforehead %>
+{% block beforehead %}
 <script type="text/javascript">
 	var comment_url = '/api/blogs/{{ blog.id }}/comments';
 
@@ -24,9 +24,9 @@
 		});
 	});
 </script>
-<% endblock %>
+{% endblock %}
 
-<% block content %>
+{% block content %}
 	<div class="uk-width-medium-3-4">
 		<article class="uk-article">
 			<h2>{{ blog.name }}</h2>
@@ -91,4 +91,4 @@
 			</ul>
 		</div>
 	</div>
-<% endblock %>
+{% endblock %}
